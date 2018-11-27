@@ -1,0 +1,35 @@
+<div *ngIf="documentList">
+  <div class="filter-block">
+    <div>
+      <label for="filter-title">Filter by title</label>
+      <input #filterTitle type="text" name="filter-title" id="filter-title" class="text-input"
+      (keyup)="searchTitle(filterTitle.value)"/>
+    </div>
+    <div>
+      <input type="checkbox" name="filter-locked" id="filter-locked" ng-model="filterLocked" class="checkbox"
+      (change)="searchLocked()"/>
+      <label for="filter-locked">Locked</label>
+    </div>
+  </div>
+
+  <ul class="document-list" *ngIf="pagedItems">
+    <li class="document-list--item" *ngFor="let document of pagedItems">
+      <app-document-preview [document]="document"></app-document-preview>
+    </li>
+  </ul>
+
+  <div class="noresult" *ngIf="filteredList && !filteredList.length">
+    Sorry, there are no results matching "{{searchedTitle}}"
+  </div>
+
+  <div class="pagination">
+    <div [ngClass]="{disabled:pager.currentPage <= 1}" class="prev">
+      <a (click)="setPage(pager.currentPage - 1)"><</a>
+    </div>
+    Page {{pager.currentPage}}
+    <div [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="next">
+      <a (click)="setPage(pager.currentPage + 1)">></a>
+    </div>
+    <p >Showing {{pager.startIndex + 1}} - {{pager.endIndex + 1}} of total {{ total }} items</p>
+  </div>
+</div>

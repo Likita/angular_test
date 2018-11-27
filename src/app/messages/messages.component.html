@@ -1,0 +1,6 @@
+<div *ngIf="messageService.messages" class="notification-block">
+  <div class="notification {{message.type}}" *ngFor="let message of messageService.messages">
+    <button class="clear" (click)="messageService.clear(message.id)">x</button>
+    <div> {{message.text}} </div>
+  </div>
+</div>

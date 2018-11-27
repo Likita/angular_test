@@ -1,0 +1,14 @@
+<a routerLink="/document/{{document.id}}">
+  <div class="item--image">
+    <img alt="{{document.type}} file" src="../../assets/img/{{document.type}}.png">
+  </div>
+  <div>
+    <p>Document Title: {{ document.title }}</p>
+    <p *ngIf="userList.length">Owner:
+      {{ userList[document.owner - 1].firstName }} {{ userList[document.owner - 1].lastName }}
+    </p>
+    <p *ngIf="!document.locked">Unlocked: <span class="unlocked"></span></p>
+    <p *ngIf="document.locked">Locked: <span class="locked"></span></p>
+    <p>Last Modified: {{ dateFormat(document.lastModified) }}</p>
+  </div>
+</a>

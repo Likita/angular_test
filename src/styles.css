@@ -1,0 +1,56 @@
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: 26px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.nav li {
+  text-align: center;
+  border: 1px solid #cccccc;
+  font-size: 20px;
+}
+
+.nav li > a,
+.nav li > span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 15px 0;
+  transition: background .5s;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.nav li a:hover {
+  background-color: #cccccc;
+}
+
+.hidden {
+  display: none;
+}
+
+@media screen and (min-width: 700px) {
+  .nav {
+    display: flex;
+  }
+
+  .nav li {
+    width: 50%;
+  }
+}

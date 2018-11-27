@@ -1,0 +1,96 @@
+.document-list {
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  list-style-type: none;
+  padding: 0;
+}
+
+.document-list--item {
+  width: 100%;
+  padding: 15px;
+  margin-top: 10px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.filter-block {
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px;
+}
+
+.checkbox {
+  margin-right: 5px;
+}
+
+.text-input {
+  padding: 5px;
+  margin-left: 20px;
+  font-size: 14px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+}
+
+.prev,
+.next {
+  display: inline-block;
+}
+
+.prev a,
+.next a {
+  cursor: pointer;
+  padding: 10px 15px;
+  font-size: 20px;
+  font-weight: bold;
+  transition: all .3s;
+  border: 2px solid #666666;
+  margin: 0 15px;
+  display: inline-block;
+  border-radius: 5px;
+}
+
+.prev a:hover,
+.next a:hover {
+  color: #ff0000;
+  border-color: #ff0000;
+}
+
+.disabled a {
+  cursor: default;
+  pointer-events: none;
+  opacity: .2;
+}
+
+.pagination {
+  text-align: center;
+  padding: 30px 0;
+}
+
+.pagination p {
+  margin-top: 15px;
+}
+
+.noresult {
+  text-align: center;
+  padding: 50px 10px;
+}
+
+@media screen and (min-width: 500px) {
+  .document-list--item {
+    width: 50%;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  .document-list--item {
+    width: 33%;
+  }
+
+  .filter-block {
+    margin: 0 auto;
+    width: 500px;
+  }
+}

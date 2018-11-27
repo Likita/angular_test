@@ -1,0 +1,14 @@
+<header>
+  <ul class="nav">
+    <li>
+      <a routerLink="/documents" *ngIf="document.id"><span>Documents</span></a>
+      <span *ngIf="!document.id">Documents</span>
+    </li>
+    <li *ngIf="document.id">
+      <a routerLink="/document/{{document.id}}" *ngIf="rootPath"><span>Document {{ document.title }}</span></a>
+      <span *ngIf="!rootPath">Document {{ document.title }}</span>
+    </li>
+  </ul>
+</header>
+<router-outlet></router-outlet>
+<app-messages></app-messages>

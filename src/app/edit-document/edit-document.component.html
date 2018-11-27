@@ -1,0 +1,58 @@
+<div class="page-document" *ngIf="document">
+  <h1>Document {{ document.title }}</h1>
+  <div class="field-group" *ngIf="userList.length">
+    Document Owner:
+    <span *ngIf="!editMode.owner">
+      {{ userList[document.owner - 1].firstName }} {{ userList[document.owner - 1].lastName }}
+    </span>
+    <button (click)="toggle('owner')" *ngIf="!editMode.owner" class="btn">
+      Edit
+    </button>
+    <span *ngIf="editMode.owner">
+      <select #owner>
+        <option value="{{user.id}}" *ngFor="let user of userList" [selected]="user.id === document.owner">
+          {{ user.firstName }} {{ user.lastName }}
+        </option>
+      </select>
+      <button (click)="toggle('owner')" class="btn">
+        Cancel
+      </button>
+      <button (click)="saveOwner(owner.value)" class="btn">
+        Save
+      </button>
+    </span>
+  </div>
+  <div class="field-group">
+    <input type="checkbox" name="locked" id="locked"
+    (change)="changeLocked()" checked="{{checked}}"/>
+    <label for="locked">Locked</label>
+  </div>
+  <div class="field-group">
+    Document type: {{ document.type }}
+  </div>
+  <p>Last Modified: {{ dateFormat(document.lastModified) }}</p>
+  <div class="field-group">
+    Description:
+    <button (click)="toggle('description')" *ngIf="editMode.description" class="btn">
+      Cancel
+    </button>
+    <button (click)="saveDescription(description.value)" *ngIf="editMode.description" class="btn">
+      Save
+    </button>
+    <button (click)="toggle('description')" *ngIf="!editMode.description" class="btn">
+      Edit
+    </button>
+    <div>
+      <p *ngIf="!editMode.description">{{ document.description }}</p>
+      <textarea #description class="description" [class.hidden]="!editMode.description"
+        placeholder="Description">{{ document.description }}</textarea>
+    </div>
+  </div>
+
+  <button (click)="goBack()" class="btn">
+    Back
+  </button>
+  <button class="btn" (click)="save()" [disabled]="documentListService.isEmpty(editDocument)">
+    Save
+  </button>
+</div>
